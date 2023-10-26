@@ -1,0 +1,42 @@
+hr.style1 {
+    border-top: 1px solid #00B5E2;
+    width: 100px;
+    height: 0.5rem;
+    background-color: #00B5E2;
+}
+
+hr.style2 {
+    border-top: 1px solid #C1C6C8;
+    width: 100px;
+    height: 0.5rem;
+    background-color: #C1C6C8;
+}
+
+hr.style3 {
+    border-top: 1px solid #C1C6C8;
+    width: 100px;
+    height: 0.5rem;
+    background-color: #C1C6C8;
+}
+
+hr.style4 {
+    border-top: 1px solid #00B5E2;
+    width: 100px;
+    height: 0.5rem;
+    background-color: #00B5E2;
+}
+
+@media (max-width: 425px) {
+    #label {
+        width: 35px
+    }
+}
+
+button:disabled {
+    background-color: rgb(130, 130, 130);
+    /* Cambia el color de fondo */
+    color: #ffffff;
+    /* Cambia el color del texto */
+    cursor: not-allowed;
+    /* Cambia el cursor al estilo "no permitido" */
+}
