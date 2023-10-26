@@ -34,9 +34,6 @@ hr.style4 {
 
 button:disabled {
     background-color: rgb(130, 130, 130);
-    /* Cambia el color de fondo */
-    color: #ffffff;
-    /* Cambia el color del texto */
+    color:white;
     cursor: not-allowed;
-    /* Cambia el cursor al estilo "no permitido" */
 }

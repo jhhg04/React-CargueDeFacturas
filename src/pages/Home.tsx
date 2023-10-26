@@ -14,15 +14,23 @@ import {
   ContainerSubInfo,
   MobileStyles,
 } from '../style/Home';
+import { useState } from 'react';
 
 type CSVRow = { [key: string]: string };
 const Home = () => {
   const { setCsv, setLoading, theme } = useCsv();
 
+  const [fileSelected, setFileSelect] = useState(false);
+
   const navigate = useNavigate();
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files?.[0];
+    if (files) {
+      setFileSelect(true);
+    } else {
+      setFileSelect(false);
+    }
 
     setLoading(true);
     setTimeout(() => {
@@ -31,6 +39,7 @@ const Home = () => {
           complete: (result: ParseResult<CSVRow>) => {
             setCsv(result.data, Object.keys(result.data[0]));
             setLoading(false);
+            setFileSelect(true);
           },
           header: true,
         });
@@ -54,8 +63,8 @@ const Home = () => {
             Cargue de facturas en dos pasos
           </ContainerFileTitle>
           <ContainerLines>
-            <hr className="style1"></hr>
-            <hr className="style2"></hr>
+            <hr className='style1'></hr>
+            <hr className='style2'></hr>
           </ContainerLines>
           <ContainerFileSubTitle>
             Carga la informacion de las facturas de tu empresa
@@ -68,15 +77,19 @@ const Home = () => {
             las imprentas y archivos .
           </p>
           <h3>Cargue de facturas</h3>
-          <label id="label">
+          <label id='label'>
             Subir o arrastrar el archivo aquí Excel,CSV
-            <input type="file" onChange={handleFileChange} accept=".csv" />
+            <input type='file' onChange={handleFileChange} accept='.csv' />
           </label>
           <p>
             El documento debe ser formato csv o excel y un tamaño maximo de 1MB.
           </p>
           <ContainerButton>
-            <Button onClick={handleNavigate}>
+            <Button
+              className={fileSelected ? '' : 'disabled-button'}
+              disabled={!fileSelected}
+              onClick={handleNavigate}
+            >
               Continuar
             </Button>
           </ContainerButton>
